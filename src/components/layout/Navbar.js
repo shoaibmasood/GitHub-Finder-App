@@ -1,7 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types'; // using default props
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+// using default props
 const Navbar = ({ icon, title }) => {
   // done destructuring for props
   return (
@@ -20,6 +21,8 @@ const Navbar = ({ icon, title }) => {
     </nav>
   );
 };
+
+// using default props
 Navbar.defaultProps = {
   title: 'Github Finder',
   icon: 'fab fa-github'
