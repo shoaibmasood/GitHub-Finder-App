@@ -18,7 +18,7 @@ const Search = ({ searchUsers, showClear, clearUsers, setAlert }) => {
 
   return (
     <div>
-      <form onSubmit={onSubmit} className="form">
+      <form onSubmit={onSubmit} className="form-text">
         <input
           type="text"
           name="text"

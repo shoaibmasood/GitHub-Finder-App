@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 const User = ({ user, loading, getUser, getUserRepos, repos, match }) => {
   //so mimic the behaviour of componentDidMount we put an empty brackets [] as 2nd argument
   //otherwise it will keep requested and gone into infinite loop
+
   useEffect(() => {
     getUser(match.params.login);
     getUserRepos(match.params.login);
@@ -42,7 +43,7 @@ const User = ({ user, loading, getUser, getUserRepos, repos, match }) => {
       ) : (
         <i className="fas fa-times-circle text-danger" />
       )}
-      <div className="card grid=2">
+      <div className="card grid-2">
         <div className="all-center">
           <img
             src={avatar_url}
