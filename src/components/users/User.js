@@ -1,10 +1,14 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useContext } from 'react';
 import Spinner from '../layout/Spinner';
 import Repos from '../repos/Repos';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import GithubContext from '../../context/github/githubContext';
 
-const User = ({ user, loading, getUser, getUserRepos, repos, match }) => {
+const User = ({ match }) => {
+  const githubContext = useContext(GithubContext);
+
+  const { getUser, loading, user, repos, getUserRepos } = githubContext;
+
   //so mimic the behaviour of componentDidMount we put an empty brackets [] as 2nd argument
   //otherwise it will keep requested and gone into infinite loop
   useEffect(() => {
@@ -13,6 +17,7 @@ const User = ({ user, loading, getUser, getUserRepos, repos, match }) => {
     //for avoid warning "React Hook useEffecthas missing dependencies" we use below line
     //eslint-disable-next-line
   }, []);
+
   const {
     name,
     company,
@@ -42,7 +47,7 @@ const User = ({ user, loading, getUser, getUserRepos, repos, match }) => {
       ) : (
         <i className="fas fa-times-circle text-danger" />
       )}
-      <div className="card grid=2">
+      <div className="card grid-2">
         <div className="all-center">
           <img
             src={avatar_url}
@@ -102,14 +107,6 @@ const User = ({ user, loading, getUser, getUserRepos, repos, match }) => {
       <Repos repos={repos} />
     </Fragment>
   );
-};
-
-User.propTypes = {
-  loading: PropTypes.bool,
-  user: PropTypes.object.isRequired,
-  repos: PropTypes.array.isRequired,
-  getUser: PropTypes.func.isRequired,
-  getUserRepos: PropTypes.func.isRequired
 };
 
 export default User;
